@@ -13,13 +13,13 @@ namespace WebTestsQldDec22
 
         internal PlanetTile GetPlanet(Func<PlanetTile, bool> strategy)
         {
-            foreach (var planetTile in driver.FindElements(By.ClassName("planet")))
+            foreach (IWebElement planetElement in driver.FindElements(By.ClassName("planet")))
             {
-                var planet = new PlanetTile(planetTile);
-                if (strategy.Invoke(planet))
+                var planet = new PlanetTile(planetElement);
+                if (strategy(planet))
                 {
                     return planet;
-                }
+                }    
             }
 
             throw new NotFoundException();

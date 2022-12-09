@@ -1,5 +1,4 @@
 using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
 
 namespace WebTestsQldDec22
@@ -7,12 +6,14 @@ namespace WebTestsQldDec22
     [TestClass]
     public class UnitTest1
     {
-        private WebDriver driver;
+        private IWebDriver driver;
+
+        public TestContext TestContext { get; set; }
 
         [TestInitialize]
         public void Setup()
         {
-            driver = new ChromeDriver();
+            driver = DriverFactory.Build(TestContext);
             driver.Url = "https://d18u5zoaatmpxx.cloudfront.net/#/";
             driver.Manage().Window.Maximize();
         }
@@ -71,7 +72,6 @@ namespace WebTestsQldDec22
 
             var planetPage = new PlanetPage(driver);
             planetPage.GetPlanet(planet => planet.Distance > 1000000).ClickExplore();
-
             Assert.IsTrue(planetPage.IsPopupDisplayed());
         }
 

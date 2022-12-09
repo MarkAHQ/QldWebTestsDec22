@@ -5,9 +5,9 @@ namespace WebTestsQldDec22
 {
     internal class Form
     {
-        private WebDriver driver;
+        private readonly IWebDriver driver;
 
-        public Form(WebDriver driver)
+        public Form(IWebDriver driver)
         {
             this.driver = driver;
         }
