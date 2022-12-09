@@ -4,9 +4,9 @@ namespace WebTestsQldDec22
 {
     internal class Toolbar
     {
-        private WebDriver driver;
+        private IWebDriver driver;
 
-        public Toolbar(WebDriver driver)
+        public Toolbar(IWebDriver driver)
         {
             this.driver = driver;
         }
