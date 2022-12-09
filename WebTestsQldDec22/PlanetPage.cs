@@ -11,12 +11,12 @@ namespace WebTestsQldDec22
             this.driver = driver;
         }
 
-        internal PlanetTile GetPlanet(Predicate<PlanetTile> strategy)
+        internal PlanetTile GetPlanet(Predicate<PlanetTile> pred)
         {
             foreach (IWebElement planetElement in driver.FindElements(By.ClassName("planet")))
             {
                 var planet = new PlanetTile(planetElement);
-                if (strategy(planet))
+                if (pred(planet))
                 {
                     return planet;
                 }    
