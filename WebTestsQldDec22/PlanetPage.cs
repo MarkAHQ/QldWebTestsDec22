@@ -11,7 +11,7 @@ namespace WebTestsQldDec22
             this.driver = driver;
         }
 
-        internal PlanetTile GetPlanet(Func<PlanetTile, bool> strategy)
+        internal PlanetTile GetPlanet(Predicate<PlanetTile> strategy)
         {
             foreach (IWebElement planetElement in driver.FindElements(By.ClassName("planet")))
             {
